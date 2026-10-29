@@ -1,0 +1,25 @@
+# Dependencies and builds
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+
+# Secrets (keep .env.example)
+.env
+.env.*
+!.env.example
+
+# Editor / OS / agent internals
+.navin/
+.vscode/
+.DS_Store
+Thumbs.db
+*.log

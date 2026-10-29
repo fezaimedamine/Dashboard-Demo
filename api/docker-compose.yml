@@ -1,0 +1,19 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: nocturne-db
+    environment:
+      POSTGRES_USER: nocturne
+      POSTGRES_PASSWORD: nocturne
+      POSTGRES_DB: nocturne
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U nocturne"]
+      interval: 3s
+      retries: 20
+volumes:
+  pgdata:
